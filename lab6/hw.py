@@ -35,7 +35,7 @@ class myModel(nn.Module):
 
 model  = myModel()
 
-criterion = nn.CrossEntropyLoss()   
+loss_fn = nn.CrossEntropyLoss()   
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
 
 epochs = 10
@@ -46,7 +46,7 @@ for epoch in range(1, epochs+1):
 
         optimizer.zero_grad()
         logits = model(images)                     
-        loss   = criterion(logits, labels)
+        loss   = loss_fn(logits, labels)
         loss.backward()
         optimizer.step()
 
